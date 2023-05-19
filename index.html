@@ -9,7 +9,7 @@
 
   <script>
     function getRandomQuote() {
-      fetch('quotes.md')
+      fetch('https://raw.githubusercontent.com/CyberHaikurity/cyberhaikurity.github.io/main/haiku.md')
       .then(response => response.text())
       .then(text => {
         const quotes = text.trim().split('\n\n');
