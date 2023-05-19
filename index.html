@@ -14,8 +14,15 @@
       .then(text => {
         const quotes = text.trim().split('\n\n');
         const randomIndex = Math.floor(Math.random() * quotes.length);
-        const quote = quotes[randomIndex];
-        document.getElementById('quote').textContent = quote.replace('\n', '<br>');
+        const quoteLines = quotes[randomIndex].split('\n');
+        const quoteContainer = document.getElementById('quote');
+        quoteContainer.innerHTML = '';
+        quoteLines.forEach(line => {
+        const quoteLine = document.createElement('p');
+        quoteLine.textContent = line;
+        quoteContainer.appendChild(quoteLine);
+      });      
+        
     });
     }
 
