@@ -10,13 +10,13 @@
   <script>
     function getRandomQuote() {
       fetch('quotes.md')
-        .then(response => response.text())
-        .then(text => {
-          const quotes = text.trim().split('\n');
-          const randomIndex = Math.floor(Math.random() * quotes.length);
-          const quote = quotes[randomIndex];
-          document.getElementById('quote').textContent = quote;
-        });
+      .then(response => response.text())
+      .then(text => {
+        const quotes = text.trim().split('\n\n');
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const quote = quotes[randomIndex];
+        document.getElementById('quote').textContent = quote.replace('\n', '<br>');
+    });
     }
 
     getRandomQuote();
