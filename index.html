@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hello World HTML</title>
+  <title>Random Haiku Generator</title>
 </head>
 <body>
-<h1>Hello World</h1>
+  <h1>Your Random Haiku</h1>
+  <p id="quote"></p>
+
+  <script>
+    function getRandomQuote() {
+      fetch('quotes.md')
+        .then(response => response.text())
+        .then(text => {
+          const quotes = text.trim().split('\n');
+          const randomIndex = Math.floor(Math.random() * quotes.length);
+          const quote = quotes[randomIndex];
+          document.getElementById('quote').textContent = quote;
+        });
+    }
+
+    getRandomQuote();
+  </script>
 </body>
 </html>
