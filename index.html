@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Random Haiku Generator</title>
+  <title>A Random Cyber Haiku</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 2rem;
+    }
+    #quote-container {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Your Random Haiku</h1>
-  <p id="quote"></p>
+  <h1>A Random Cyber Haiku</h1>
+  <div id="quote-container">
+    <div id="quote"></div>
+  </div>
 
   <script>
     function getRandomQuote() {
       fetch('https://raw.githubusercontent.com/CyberHaikurity/cyberhaikurity.github.io/main/haiku.md')
-      .then(response => response.text())
-      .then(text => {
-        const quotes = text.trim().split('\n\n');
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        const quoteLines = quotes[randomIndex].split('\n');
-        const quoteContainer = document.getElementById('quote');
-        quoteContainer.innerHTML = '';
-        quoteLines.forEach(line => {
-        const quoteLine = document.createElement('p');
-        quoteLine.textContent = line;
-        quoteContainer.appendChild(quoteLine);
-      });      
-        
-    });
+        .then(response => response.text())
+        .then(text => {
+          const quotes = text.trim().split('\n\n');
+          const randomIndex = Math.floor(Math.random() * quotes.length);
+          const quoteLines = quotes[randomIndex].split('\n');
+          const quoteContainer = document.getElementById('quote');
+          quoteContainer.innerHTML = ''; // Clear previous content
+          quoteLines.forEach(line => {
+            const quoteLine = document.createElement('p');
+            quoteLine.textContent = line;
+            quoteContainer.appendChild(quoteLine);
+          });
+        });
     }
 
     getRandomQuote();
